@@ -1,0 +1,6 @@
+{
+    "configuration": "PSRAM=disabled,PartitionScheme=default,CPUFreq=240,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=115200,DebugLevel=none",
+    "board": "espressif:esp32:esp32",
+    "port": "COM6",
+    "sketch": "examples\\MyWifi\\MyWifi.ino"
+}

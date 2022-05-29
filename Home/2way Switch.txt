@@ -1,0 +1,10 @@
+Components Required
+Generic ESP8266 Module
+HiLink 5V power supply
+AMS1117 IC
+5V Relays (4 pcs)
+Mct2e IC (4 pcs)
+1n4007 diode (4 pcs)
+3pin Terminal connector (4 pcs)
+BC547 transistor (4 pcs)
+10 resistors (8 pcs)
