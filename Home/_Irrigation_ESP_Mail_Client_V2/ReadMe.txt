@@ -1,0 +1,1 @@
+Irrigation without power saver
