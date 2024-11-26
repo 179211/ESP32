@@ -1,0 +1,7 @@
+{
+    "configuration": "FlashFreq=80,UploadSpeed=921600,DebugLevel=none",
+    "board": "espressif:esp32:esp32doit-devkit-v1",
+    "output": "../build",
+    "sketch": "Home\\_Irrigation_ESP_Mail_Client_V2\\_Irrigation_ESP_Mail_Client_V2.ino",
+    "port": "COM10"
+}
