@@ -1,0 +1,47 @@
+Frequency Calculator
+https://eleccelerator.com/avr-timer-calculator/
+
+
+// normal delay() won't work anymore because we are changing Timer1 behavior
+// Adds delay_ms and delay_us functions
+#include <util/delay.h>
+
+// Clock at 8mHz
+#define F_CPU 8000000
+
+const int PWMPin = 1;  // Only works with Pin 1(PB1)
+const int PwmTop = 63;  // Only works with Pin 1(PB1)
+
+void setup()
+{
+	pinMode(PWMPin, OUTPUT);
+
+	// disable interrupts
+	TIMSK = 0;
+
+	// Fast PWM Mode OCRA, Prescaler = 64, Top 63, Non Inverted
+	// PWM on Pin 1(PB1), Pin 0(PB0) disabled
+	// 8Mhz / ( 64 * (63 + 1) ) = 2khz
+	TCCR0A = 1<<COM0B1 | 0<<COM0B0 | 1<<WGM01 | 1<<WGM00;
+	TCCR0B = 1<<WGM02 | 0<<CS02 | 1<<CS01 | 1<<CS00;
+	  
+	// Fast PWM Mode OCRA, Prescaler = 8, Top 39, Non Inverted
+	// PWM on Pin 1(PB1), Pin 0(PB0) disabled
+	// 8Mhz / ( 8 * (39 + 1) ) = 25Khz
+	//TCCR0A = _BV(COM0B1) | _BV(WGM01) | _BV(WGM00);
+	//TCCR0B = _BV(WGM02) | _BV(CS01);
+  
+	// Set TOP
+	OCR0A = PwmTop;
+	// 50% duty cycle
+	OCR0B = 31;
+}
+
+void loop()
+{
+	//int in, out;
+	//in = 31; //analogRead(PotPin);
+	//out = map(in, 0, 1023, 0, PwmTop);
+	//OCR0B = out;
+	//_delay_ms(200);
+}

@@ -1,0 +1,30 @@
+PWM
+
+Duty cycle for Fast PWM:
+OCR0A is 200
+non-inverting mode is selected, OC0A will be high from 0 – 199
+0 to199 – High pulse, 200 to 255 – Low pulse
+
+Duty cycle = ( 200 / 255 ) x 100 = 78.41%
+fPWM = fclk_I/O / N*256
+fPWM = fclk_I/O / N*(Top + 1)
+
+N above represents prescale factor ( 1, 8, 64, 256 or 1024 )
+
+
+Duty cycle for Phase correct PWM:
+OCR0A is 150
+0 to 149 – HIGH pulse & 150 to 255 – Low pulse ( Upcounting )
+255 to 150 – Low pulse & 149 to 0 – High pulse ( Downcounting )
+
+Duty cycle = ( 300 / 512 ) x 100 =  58.59%
+fPWM = fclk_I/O / N*510
+fPWM = fclk_I/O / N*2*(Top + 1)
+
+output compare registers OCR0A and OCR0B ranging from 0 to 255
+CS02, CS01 and CS00 are used to set the clock frequency speed at which the timer operates
+
+001 - No PreScaling
+010 - 8
+64, 256, 1024
+
