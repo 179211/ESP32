@@ -22,7 +22,7 @@ void setup() {
 
   for (i=0; i < NUM_Servo; i++){
     myservo[i].setPeriodHertz(50);
-    myservo[i].attach(servoPin[i], 500, 2000);
+    myservo[i].attach(servoPin[i], 500, 2000); //(PIN, MIN, MAX)
   }
 	// using default min/max of 1000us and 2000us
 	// different servos may require different min/max settings
@@ -31,7 +31,6 @@ void setup() {
 
 void loop() {
 
-		myservo[0].write(10);
 		myservo[1].write(20);
 		myservo[2].write(30);
 		myservo[3].write(40);
@@ -40,16 +39,15 @@ void loop() {
 		myservo[6].write(70);
 		myservo[7].write(80);
 
-	// for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-	// 	// in steps of 1 degree
-  //   //Serial.println(pos);
-	// 	myservo.write(pos);    // tell servo to go to position in variable 'pos'
-	// 	delay(15);             // waits 15ms for the servo to reach the position
-	// }
-	// for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-  //   //Serial.println(pos);
-	// 	myservo.write(pos);    // tell servo to go to position in variable 'pos'
-	// 	delay(15);             // waits 15ms for the servo to reach the position
-	// }
+	for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+        Serial.println(pos);
+		myservo[0].write(pos);    // tell servo to go to position in variable 'pos'
+		delay(150);             // waits 15ms for the servo to reach the position
+	}
+	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+        Serial.println(pos);
+		myservo[0].write(pos);    // tell servo to go to position in variable 'pos'
+		delay(150);             // waits 15ms for the servo to reach the position
+	}
 }
 

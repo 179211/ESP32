@@ -1,5 +1,4 @@
-#include "ESC.h"
-#define ESC_PIN (16) // connected to ESC control wire
+#define ESC_PIN (13) // connected to ESC control wire
 #define LED_BUILTIN (2) // not defaulted properly for ESP32s/you must define it
 #define POT_PIN (4) // Analog pin used to connect the potentiometer center pin
 
@@ -7,11 +6,11 @@
 //#define MAX_SPEED 1240 // 2000 speed where my motor drew 3.6 amps at 12v.
 //#define ARM_SPEED 500
 
-#define MIN_SPEED 57 // speed just slow enough to turn motor off
-#define MAX_SPEED 120 // 2000 speed where my motor drew 3.6 amps at 12v.
+//Res: 8:  13 - 38
+//Res: 10:  52 - 153
+#define MIN_SPEED 56
+#define MAX_SPEED 120
 #define ARM_SPEED 52
-
-//ESC myESC (ESC_PIN, MIN_SPEED, MAX_SPEED, ARM_SPEED);         // ESC_Name (PIN, Minimum Value, Maximum Value, Arm Value)
 
 long int val; // variable to read the value from the analog pin
 int dutyCycle = 15;
@@ -30,12 +29,11 @@ void setup() {
   delay(5000);
   Serial.println("Hi Test");
 
-  pinMode(LED_BUILTIN, OUTPUT);             // LED Visual Output
+  pinMode(LED_BUILTIN, OUTPUT);
   pinMode(POT_PIN, INPUT);
   pinMode(ESC_PIN, OUTPUT);
-  delay(5000);
+  delay(1000);
 
-  //myESC.arm();                          // Send the Arm value
   b = ledcAttach(ESC_PIN, PWMFreq, PWMResolution);
   Serial.print("PWMResolution ");
   Serial.println(PWMResolution);
@@ -54,18 +52,15 @@ void loop() {
   val = map(val, 0, 4095, MIN_SPEED, MAX_SPEED);  // scale it to use it with the ESC (value between 1000 and 2000)
   Serial.println(val);
   ledcWrite(ESC_PIN, val);
-  delay(700);    
+  delay(500);
 
 }
 
-
 void EspArm(){
-  //Res: 8:  13 - 38
-  //Res: 10:  52 - 153
   ledcWrite(ESC_PIN, ARM_SPEED);
-  delay(700);    
+  delay(500);    
   ledcWrite(ESC_PIN, ARM_SPEED + 2);
-  delay(700);    
+  delay(500);    
   ledcWrite(ESC_PIN, ARM_SPEED);
-  delay(700);    
+  delay(500);    
 }
