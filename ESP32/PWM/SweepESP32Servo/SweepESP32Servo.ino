@@ -4,10 +4,11 @@
 // Recommended PWM GPIO pins on the ESP32 include 2,4,12-19,21-23,25-27,32-33 
 
 int OnBoardLed = 2;
-int i;
+int i = 0;
+int pos = 0;
 
-#define NUM_Servo  8
-int servoPin[NUM_Servo] = {32, 33, 25, 26, 27, 4, 16, 17};
+#define NUM_Servo  9
+int servoPin[NUM_Servo] = {13, 32, 33, 25, 26, 27, 4, 16, 17};
 Servo myservo[NUM_Servo];  
 
 void setup() {

@@ -1,4 +1,7 @@
 ESP32/UsbDriver/**
 ESP32/arduino-esp32-master/**
 IDF_TOOLS_PATH/**
-
+build/**
+libraries
+Esp32vs
+MyBlinkVs

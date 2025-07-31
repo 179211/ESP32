@@ -98,6 +98,7 @@
                 "C:\\Users\\lenovo\\Documents\\Arduino\\hardware\\espressif\\esp32\\libraries\\WiFiClientSecure\\src",
                 "C:\\Users\\lenovo\\Documents\\Arduino\\hardware\\espressif\\esp32\\libraries\\SPI\\src",
                 "C:\\Users\\lenovo\\Documents\\Arduino\\hardware\\espressif\\esp32\\libraries\\Wire\\src",
+                "C:\\Users\\lenovo\\Documents\\Arduino\\libraries",
                 "C:\\Users\\lenovo\\Documents\\Arduino\\libraries\\Adafruit_GFX_Library",
                 "C:\\Users\\lenovo\\Documents\\Arduino\\libraries\\Adafruit_BusIO",
                 "C:\\Users\\lenovo\\Documents\\Arduino\\libraries\\Adafruit_SSD1306",
@@ -112,7 +113,8 @@
                 "c:\\users\\lenovo\\documents\\arduino\\hardware\\espressif\\esp32\\tools\\xtensa-esp32-elf\\lib\\gcc\\xtensa-esp32-elf\\5.2.0\\include",
                 "c:\\users\\lenovo\\documents\\arduino\\hardware\\espressif\\esp32\\tools\\xtensa-esp32-elf\\lib\\gcc\\xtensa-esp32-elf\\5.2.0\\include-fixed",
                 "c:\\users\\lenovo\\documents\\arduino\\hardware\\espressif\\esp32\\tools\\xtensa-esp32-elf\\xtensa-esp32-elf\\include",
-                "c:\\users\\lenovo\\documents\\arduino\\hardware\\espressif\\esp32\\tools\\xtensa-esp32-elf\\xtensa-esp32-elf\\sysroot\\usr\\include"
+                "c:\\users\\lenovo\\documents\\arduino\\hardware\\espressif\\esp32\\tools\\xtensa-esp32-elf\\xtensa-esp32-elf\\sysroot\\usr\\include",
+                "C:/Users/lenovo/Documents/Arduino/libraries/ESP32Servo/src"
             ],
             "forcedInclude": [
                 "C:\\Users\\lenovo\\Documents\\Arduino\\hardware\\espressif\\esp32\\cores\\esp32\\Arduino.h"
