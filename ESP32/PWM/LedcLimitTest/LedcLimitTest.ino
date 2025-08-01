@@ -8,9 +8,9 @@
 
 //Res: 8:  13 - 38
 //Res: 10:  52 - 153
-#define MIN_SPEED 56
-#define MAX_SPEED 120
-#define ARM_SPEED 52
+#define MIN_SPEED 26
+#define MAX_SPEED 132
+#define ARM_SPEED 0
 
 long int val; // variable to read the value from the analog pin
 int dutyCycle = 15;
@@ -47,26 +47,30 @@ void setup() {
   Serial.println((MAX_DUTY_CYCLE/20)*2);
   delay(5000);
     
-  EspArm();
+  ledcWrite(PWMChannel_0, MIN_SPEED);
+  delay(500);
+  ledcWrite(PWMChannel_0, MIN_SPEED+1);
+  delay(500);
+  ledcWrite(PWMChannel_0, MIN_SPEED);
+  delay(500);
 
-  digitalWrite(LED_BUILTIN, HIGH);          // LED High Once Armed
-  delay(5000);                          // Wait for a while
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(1000);
 }
 
 void loop() {
-  val = analogRead(POT_PIN);            // reads the value of the potentiometer (value between 0 and 4095)
-  val = map(val, 0, 4095, MIN_SPEED, MAX_SPEED);  // scale it to use it with the ESC (value between 1000 and 2000)
-  Serial.println(val);
-  ledcWrite(ESC_PIN, val);
-  delay(500);
-
-}
-
-void EspArm(){
-  ledcWrite(ESC_PIN, ARM_SPEED);
-  delay(500);    
-  ledcWrite(ESC_PIN, ARM_SPEED + 2);
-  delay(500);    
-  ledcWrite(ESC_PIN, ARM_SPEED);
-  delay(500);    
+  for(int i = MIN_SPEED; i < MAX_SPEED; i++ ){
+    Serial.println(i);
+    ledcWrite(PWMChannel_0, i);
+    delay(500);
+  }
+  for(int i = MAX_SPEED; i > MIN_SPEED; i-- ){
+    Serial.println(i);
+    ledcWrite(PWMChannel_0, i);
+    delay(500);
+  }
 }

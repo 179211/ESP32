@@ -51,7 +51,7 @@ int servoPin = 17;
 #elif defined(CONFIG_IDF_TARGET_ESP32C3)
 int servoPin = 7;
 #else
-int servoPin = 15;
+int servoPin = 13;
 #endif
 
 void setup() {
