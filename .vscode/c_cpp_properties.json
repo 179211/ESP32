@@ -114,6 +114,9 @@
                 "c:\\users\\lenovo\\documents\\arduino\\hardware\\espressif\\esp32\\tools\\xtensa-esp32-elf\\lib\\gcc\\xtensa-esp32-elf\\5.2.0\\include-fixed",
                 "c:\\users\\lenovo\\documents\\arduino\\hardware\\espressif\\esp32\\tools\\xtensa-esp32-elf\\xtensa-esp32-elf\\include",
                 "c:\\users\\lenovo\\documents\\arduino\\hardware\\espressif\\esp32\\tools\\xtensa-esp32-elf\\xtensa-esp32-elf\\sysroot\\usr\\include",
+                "C:/Users/lenovo/Documents/Arduino/libraries/RF24",
+                "${workspaceFolder}/Lib/MyDisplay/src",
+                "${workspaceFolder}/ESP-IDF/v5.5/esp-idf/components/soc/esp32/include",
                 "C:/Users/lenovo/Documents/Arduino/libraries/ESP32Servo/src"
             ],
             "forcedInclude": [

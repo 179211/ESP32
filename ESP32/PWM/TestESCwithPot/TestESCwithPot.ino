@@ -47,7 +47,8 @@ void setup() {
   Serial.println((MAX_DUTY_CYCLE/20)*2);
   delay(5000);
     
-  EspArm();
+  //EspArm(ESC_PIN);
+  EspArm(PWMChannel_0);
 
   digitalWrite(LED_BUILTIN, HIGH);          // LED High Once Armed
   delay(5000);                          // Wait for a while
@@ -57,16 +58,17 @@ void loop() {
   val = analogRead(POT_PIN);            // reads the value of the potentiometer (value between 0 and 4095)
   val = map(val, 0, 4095, MIN_SPEED, MAX_SPEED);  // scale it to use it with the ESC (value between 1000 and 2000)
   Serial.println(val);
-  ledcWrite(ESC_PIN, val);
+  //ledcWrite(ESC_PIN, val);
+  ledcWrite(PWMChannel_0, val);
   delay(500);
 
 }
 
-void EspArm(){
-  ledcWrite(ESC_PIN, ARM_SPEED);
+void EspArm(uint8_t x){
+  ledcWrite(x, ARM_SPEED);
   delay(500);    
-  ledcWrite(ESC_PIN, ARM_SPEED + 2);
+  ledcWrite(x, ARM_SPEED + 1);
   delay(500);    
-  ledcWrite(ESC_PIN, ARM_SPEED);
+  ledcWrite(x, ARM_SPEED);
   delay(500);    
 }

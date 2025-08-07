@@ -1,7 +1,6 @@
 #ifndef MyDisplay_H
 #define MyDisplay_H
 
-#include <Arduino.h>
 #include <Adafruit_SSD1306.h>
 
 extern Adafruit_SSD1306 display;
@@ -9,11 +8,11 @@ extern Adafruit_SSD1306 display;
 class MyDisplay
 {
   private:
-    bool _isDisplayAvailable = false;
+    bool _isDisplayAvailable = true;
 
   public:
-    MyDisplay(bool isDisplayAvailable);
-    void showMsg(String msg);
+    MyDisplay(uint8_t addr = 0x3C);
+    void showMsg(String msg, int delaySec = 2);
 };
 
 #endif

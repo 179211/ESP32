@@ -7,8 +7,8 @@ int OnBoardLed = 2;
 int i = 0;
 int pos = 0;
 
-#define NUM_Servo  9
-int servoPin[NUM_Servo] = {13, 32, 33, 25, 26, 27, 4, 16, 17};
+#define NUM_Servo  10
+int servoPin[NUM_Servo] = {4, 15, 13, 32, 33, 25, 26, 27, 16, 17};
 Servo myservo[NUM_Servo];  
 
 void setup() {
@@ -32,23 +32,26 @@ void setup() {
 
 void loop() {
 
-		myservo[1].write(20);
-		myservo[2].write(30);
-		myservo[3].write(40);
-		myservo[4].write(50);
-		myservo[5].write(60);
-		myservo[6].write(70);
-		myservo[7].write(80);
+	myservo[0].write(20);
+	myservo[1].write(30);
+	myservo[2].write(40);
+	myservo[3].write(50);
+	myservo[4].write(60);
+	myservo[5].write(70);
+	myservo[6].write(80);
+	myservo[7].write(90);
+	myservo[8].write(100);
+	myservo[9].write(110);
 
 	for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
         Serial.println(pos);
 		myservo[0].write(pos);    // tell servo to go to position in variable 'pos'
-		delay(150);             // waits 15ms for the servo to reach the position
+		delay(15);             // waits 15ms for the servo to reach the position
 	}
 	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
         Serial.println(pos);
 		myservo[0].write(pos);    // tell servo to go to position in variable 'pos'
-		delay(150);             // waits 15ms for the servo to reach the position
+		delay(15);             // waits 15ms for the servo to reach the position
 	}
 }
 

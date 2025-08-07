@@ -51,13 +51,31 @@ GPIO	Input	Output	Notes
   GND:GND
   VIN:VCC
 
-LED = 2 low even if pullhigh
+LED = 2
 Display = 21 / 22
 O/P = 4, 16, 17 , 18, 19, 23, 27, 13
 I/P = 36, 39, 34, 35, 32, 33, 25, 26
 Touch = 15, 12, 14
 
 34, 35, 36, 39 - Note that they do not have internal pull-up or pull-down resistors
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+PWM
+// 16 servo objects can be created on the ESP32
+// Recommended PWM GPIO pins on the ESP32 include 2,4,12-19,21-23,25-27,32-33 
+// Res: 8:  13 - 38
+// 	Res: 10:  52 - 153
+The ESP32 can generate a PWM signal with a frequency of up to 40 MHz. A PWM frequency of 40 MHz can have a duty resolution of just 1 bit, meaning the duty cycle remains fixed at 50% and cannot be adjusted.
+If we configure the timer with a frequency of 1 Hz and a resolution of 8 bits, the timer will take 1 second to count from 0 to 255 (28).
+
+PWM waveforms channels are divided into two groups, each containing 8 high-speed channels and 8 low-speed channels.
+Within each group, there are 4 timers shared among 8 channels, which means that every two channels share the same timer. Since the timer determines the frequency, it’s important to understand that we cannot adjust the frequency of each channel independently within a pair. 
+
+However, we can control the PWM duty cycle of each channel independently.
+
+Multiple pins can be attached to the same channel, which means they can all output the same PWM signal.
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 pinMode(button, INPUT_PULLUP); // set the internal pull up resistor, unpressed button is HIGH
 Add a pull-down resistor when the signal should be LOW if the switch is open

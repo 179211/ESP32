@@ -10,7 +10,6 @@
 //Res: 10:  52 - 153
 #define MIN_SPEED 26
 #define MAX_SPEED 132
-#define ARM_SPEED 0
 
 long int val; // variable to read the value from the analog pin
 int dutyCycle = 15;
