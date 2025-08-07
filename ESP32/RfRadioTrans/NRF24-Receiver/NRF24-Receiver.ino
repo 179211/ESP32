@@ -19,8 +19,30 @@ const int MAX_DUTY_CYCLE = (int)(pow(2, PWMResolution) - 1);
 
 const int NUM_Servo = 12;
 int testPin = 0;
-int servoPin[NUM_Servo] = {32, 33, 25, 26, 27, 14, 12, 13, 15, 4, 16, 17};
+// int servoPin[NUM_Servo] = {32, 33, 25, 26, 27, 14, 12, 13, 15, 4, 16, 17};
+int servoData[NUM_Servo][3] = {
+  {32, 500, 2000}, 
+  {33, 500, 2000}, 
+  {25, 500, 2000}, 
+  {26, 500, 2000}, 
+  {27, 500, 2000}, 
+  {14, 500, 2000}, 
+  {12, 500, 2000}, 
+  {13, 500, 2000}, 
+  {15, 500, 2000}, 
+  {4,  500, 2000}, 
+  {16, 500, 2000}, 
+  {17, 500, 2000}
+};
 Servo myservo[NUM_Servo];  
+
+// struct MyServo {
+//   Servo servo;
+//   int pin;
+//   int min = MIN_SPEED;
+//   int max = MAX_SPEED;
+// };
+// MyServo servo[NUM_Servo];
 
 #define ChipEnable 2
 #define PIN_V_MO 23
@@ -151,7 +173,7 @@ void initServo(){
 
   for (int i = 0; i < NUM_Servo; i++){
     myservo[i].setPeriodHertz(PWMFreq);
-    myservo[i].attach(servoPin[i], 500, 2000); //(PIN, MIN, MAX)
+    myservo[i].attach(servoData[i][0], servoData[i][1], servoData[i][2]); //(PIN, MIN, MAX)
     delay(100);
   }
 }
