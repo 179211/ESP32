@@ -1,3 +1,9 @@
+int flapSpeed = 4;
+// int flapMin = 45;
+// int flapMax = 135;
+int flapMin = 0;
+int flapMax = 180;
+
 /* To Arm ESC when its started beeping cont
 1. Send Max 
 2. Send Min after beep
@@ -30,20 +36,20 @@ const int PWMResolution = 10;
 const int MAX_DUTY_CYCLE = (int)(pow(2, PWMResolution) - 1);
 
 int testPin = 1000;
-const int NUM_Servo = 1;
+const int NUM_Servo = 4;
 // int servoPin[NUM_Servo] = {32, 33, 25, 26, 27, 14, 12, 13, 15, 4, 16, 17};
 Servo myservo[NUM_Servo];  
 int servoData[NUM_Servo][3] = {
-  // {32, 500, 2000}, //  0
-  // {33, 500, 2000}, //  1
-  // {25, 500, 2000}, //  2
-  // {26, 500, 2000}, //  3
+  {32, 1000, 2000},   //  0
+  {33, 500, 2000},    //  1
+  {25, 500, 2000},    //  2
+  {26, 600, 2300}     //  3
   // {27, 500, 2000}, //  4
   // {14, 500, 2000}, //  5
   // {12, 500, 2000}, //  6
   // {13, 500, 2000}, //  7
   // {15, 500, 2000}, //  8
-  {4,  1000, 2000} //  9
+  // {4,  1000, 2000} //  9
   // {16, 500, 2000}, // 10
   // {17, 500, 2000}  // 11
 };
@@ -83,7 +89,8 @@ int i = 0;
 int pos = 0;
 
 void setup() {
-  Serial.begin(115200); while (!Serial) {}
+  Serial.begin(115200); //while (!Serial) {}
+  delay(5000);
   Serial.println("Hi Test");
   // pinMode(LED_BUILTIN, OUTPUT);
 
@@ -93,7 +100,7 @@ void setup() {
 
   initServo();
   //servoArm(testPin);
-  testAllServo();
+  //testAllServo();
 
   //delay(1000);
   //digitalWrite(LED_BUILTIN, HIGH);
@@ -101,16 +108,17 @@ void setup() {
 }
 
 void loop() {
-  myservo[0].write(40);
-	// myservo[1].write(30);
-	// myservo[2].write(40);
-	// myservo[3].write(50);
+  testFlap(3);
+  // myservo[0].write(40);
+	// myservo[1].write(50);
+	// myservo[2].write(60);
+	// myservo[3].write(70);
 	// myservo[4].write(60);
 	// myservo[5].write(70);
 	// myservo[6].write(80);
 	// myservo[7].write(90);
 	// myservo[8].write(100);
-	// myservo[9].write(3); //4
+	// myservo[9].write(3);     //4
 	// myservo[10].write(120);
 	// myservo[11].write(130);
 
@@ -151,6 +159,19 @@ void testServoMenu(){
 
 }
 
+void testFlap(int servoNo){
+  for(i = 0; i<50; i++){
+    for (pos = flapMin; pos <= flapMax; pos++) {
+      myservo[servoNo].write(pos);
+      delay(flapSpeed);
+    }
+    for (pos = flapMax; pos >= flapMin; pos--) {
+      myservo[servoNo].write(pos);
+      delay(flapSpeed);
+    }
+  }
+}
+
 void initServo(){
   Serial.println("initServo");
 
@@ -166,8 +187,8 @@ void initServo(){
     myservo[i].setPeriodHertz(PWMFreq);
     myservo[i].attach(servoData[i][0], servoData[i][1], servoData[i][2]); //(PIN, MIN, MAX)
     delay(500);
-    Serial.println(servoData[i][1]);
-    myservo[i].writeMicroseconds(servoData[i][1]);
+    Serial.println(servoData[i][1] + 100);
+    myservo[i].writeMicroseconds(servoData[i][1] + 100);
 
     delay(500);
     Serial.println(i);
@@ -201,11 +222,11 @@ void testServo(int servoNo){
   Serial.println(servoNo);
 	for (pos = 0; pos <= 180; pos += 1) {
 		myservo[servoNo].write(pos);
-		delay(15);
+		delay(30);
 	}
 	for (pos = 180; pos >= 0; pos -= 1) {
 		myservo[servoNo].write(pos);
-		delay(15);
+		delay(30);
 	}
   Serial.println("testServo Ended");
 }
