@@ -15,4 +15,5 @@ void setup()
 void loop()
 {
   myDisplay.showMsg("Hello World");
+  myDisplay.showMsg("Hello World", 3);
 }

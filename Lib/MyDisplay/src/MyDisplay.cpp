@@ -1,6 +1,6 @@
 #include "MyDisplay.h"
 
-MyDisplay::MyDisplay(uint8_t addr = 0x3C)
+MyDisplay::MyDisplay(uint8_t addr)
 {
   Serial.begin(115200);
   while (!Serial) {}  // some boards need to wait to ensure access to serial over USB
@@ -25,7 +25,7 @@ MyDisplay::MyDisplay(uint8_t addr = 0x3C)
   }
 }
 
-void MyDisplay::showMsg(String msg, int delaySec = 2){
+void MyDisplay::showMsg(String msg, int delaySec){
   if (_isDisplayAvailable){
       display.clearDisplay();
       display.setCursor(0,0);
